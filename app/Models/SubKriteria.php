@@ -13,7 +13,7 @@ class SubKriteria extends Model
     protected $primaryKey = 'id_sub_kriteria';
 
     protected $fillable = [
-        'id_kriteria',
+        'kriteria_id',
         'nama',
         'nilai',
     ];
@@ -21,6 +21,6 @@ class SubKriteria extends Model
     // Relasi ke Kriteria
     public function kriteria()
     {
-        return $this->belongsTo(Kriteria::class, 'id_kriteria', 'id_kriteria');
+        return $this->belongsTo(Kriteria::class, 'kriteria_id', 'id_kriteria');
     }
 }

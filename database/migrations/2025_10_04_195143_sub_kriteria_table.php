@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('sub_kriteria', function (Blueprint $table) {
             $table->id('id_sub_kriteria');
-            $table->unsignedBigInteger('id_kriteria');
+            $table->unsignedBigInteger('kriteria_id');
             $table->string('nama', 255);
             $table->float('nilai')->default(0);
             $table->timestamps();
 
             // Foreign key ke tabel kriteria
-            $table->foreign('id_kriteria')
+            $table->foreign('kriteria_id')
                 ->references('id_kriteria')
                 ->on('kriteria')
                 ->onDelete('cascade');

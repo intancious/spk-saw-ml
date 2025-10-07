@@ -44,7 +44,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <a href="{{ route('kriteria.index') }}"
+                                        <a href="{{ route('subkriteria.index') }}"
                                             class="text-secondary text-decoration-none">Data Sub Kriteria</a>
                                     </div>
                                 </div>
