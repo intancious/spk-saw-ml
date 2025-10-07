@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AlternatifController;
+use App\Http\Controllers\Admin\HasilController;
 use App\Http\Controllers\Admin\KriteriaController;
+use App\Http\Controllers\Admin\PenilaianController;
+use App\Http\Controllers\Admin\SubkriteriaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -58,5 +61,35 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', [KriteriaController::class, 'edit'])->name('kriteria.edit');
         Route::put('/update/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
         Route::delete('/delete/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
+    });
+
+    // 🔹 Sub Kriteria
+    Route::middleware('userAkses:admin')->prefix('admin/subkriteria')->group(function () {
+        Route::get('/', [SubkriteriaController::class, 'index'])->name('subkriteria.index');
+        Route::get('/create', [SubKriteriaController::class, 'create'])->name('subkriteria.create');
+        Route::post('/store', [SubKriteriaController::class, 'store'])->name('subkriteria.store');
+        Route::get('/edit/{id}', [SubKriteriaController::class, 'edit'])->name('subkriteria.edit');
+        Route::put('/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
+        Route::delete('/delete/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
+    });
+
+    // 🔹 Penilaian
+    Route::middleware('userAkses:admin')->prefix('admin/penilaian')->group(function () {
+        Route::get('/', [PenilaianController::class, 'index'])->name('penilaian.index');
+        Route::get('/create', [PenilaianController::class, 'create'])->name('penilaian.create');
+        Route::post('/store', [PenilaianController::class, 'store'])->name('penilaian.store');
+        Route::get('/edit/{id}', [PenilaianController::class, 'edit'])->name('penilaian.edit');
+        Route::put('/update/{id}', [PenilaianController::class, 'update'])->name('penilaian.update');
+        Route::delete('/delete/{id}', [PenilaianController::class, 'destroy'])->name('penilaian.destroy');
+    });
+
+    // 🔹 Hasil
+    Route::middleware('userAkses:admin')->prefix('admin/hasil')->group(function () {
+        Route::get('/', [HasilController::class, 'index'])->name('hasil.index');
+        Route::get('/create', [HasilController::class, 'create'])->name('hasil.create');
+        Route::post('/store', [HasilController::class, 'store'])->name('hasil.store');
+        Route::get('/edit/{id}', [HasilController::class, 'edit'])->name('hasil.edit');
+        Route::put('/update/{id}', [HasilController::class, 'update'])->name('hasil.update');
+        Route::delete('/delete/{id}', [HasilController::class, 'destroy'])->name('hasil.destroy');
     });
 });

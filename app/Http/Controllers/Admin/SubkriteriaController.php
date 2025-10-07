@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class KriteriaController extends Controller
+class SubkriteriaController extends Controller
 {
     public function index(){
-        
+
     }
 }
