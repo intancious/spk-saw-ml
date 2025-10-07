@@ -1,11 +1,16 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\AlternatifController;
 use App\Http\Controllers\Admin\KriteriaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
+=======
+use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Route;
+>>>>>>> 1b2868bb53a74e3e94e1a63d99eeadbfe3a1727c
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +23,7 @@ use App\Http\Controllers\SessionController;
 |
 */
 
+<<<<<<< HEAD
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [SessionController::class, 'index'])->name('login');
@@ -60,3 +66,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/delete/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
     });
 });
+=======
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+>>>>>>> 1b2868bb53a74e3e94e1a63d99eeadbfe3a1727c
