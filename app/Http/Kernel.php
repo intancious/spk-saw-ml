@@ -36,10 +36,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-<<<<<<< HEAD
             \RealRashid\SweetAlert\ToSweetAlert::class,
-=======
->>>>>>> 1b2868bb53a74e3e94e1a63d99eeadbfe3a1727c
         ],
 
         'api' => [
@@ -67,10 +64,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-<<<<<<< HEAD
         'userAkses' => \App\Http\Middleware\UserAkses::class,
-=======
-        'role' => \App\Http\Middleware\CekRole::class,
->>>>>>> 1b2868bb53a74e3e94e1a63d99eeadbfe3a1727c
     ];
 }
