@@ -185,10 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
-<<<<<<< HEAD
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-=======
->>>>>>> 1b2868bb53a74e3e94e1a63d99eeadbfe3a1727c
 
         /*
          * Application Service Providers...
