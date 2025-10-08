@@ -11,7 +11,7 @@
 
     @if ($kriteria->isEmpty())
         <div class="alert alert-info">
-            Semua kriteria menggunakan penilaian input langsung.
+            Belum Ada Data Kriteria Atau kriteria menggunakan penilaian input langsung.
         </div>
     @else
         @foreach ($kriteria as $kr)
