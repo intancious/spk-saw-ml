@@ -57,7 +57,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('alternatif.index') }}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Data Alternatif</span></a>
             </li>
@@ -90,7 +90,7 @@
                     <i class="fas fa-fw fa-users-cog"></i>
                     <span>Data User</span></a>
             </li>
-            {{-- 
+            {{--
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-user"></i>

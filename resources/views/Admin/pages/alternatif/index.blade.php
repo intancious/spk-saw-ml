@@ -4,70 +4,66 @@
 ])
 
 @section('content')
-    {{-- <div class="container-fluid"> --}}
-
-    <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Data Alternatif</h1>
-    <!-- DataTales Example -->
+
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <a href="{{ route('user.create') }}" class="btn btn-primary"><i class="bi bi-plus"></i>Tambah
-                Alternatif</a>
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold">Daftar Alternatif</h6>
+            <a href="{{ route('alternatif.create') }}" class="btn btn-light btn-sm">
+                <i class="fas fa-plus"></i> Tambah Alternatif
+            </a>
         </div>
+
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                <table class="table table-bordered text-center align-middle" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="bg-primary text-white">
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Role</th>
-                            <th>Jabatan</th>
-                            <th>Shift</th>
-                            <th>Tgl Daftar</th>
-                            <th>Action</th>
+                            <th>Nama Alternatif</th>
+                            <th>Foto</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        @foreach ($users as $us)
+                        @forelse ($alternatifs as $alt)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $us->name }}</td>
-                                <td>{{ $us->email }}</td>
-                                <td>{{ $us->username }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $alt->nama }}</td>
                                 <td>
-                                    @if ($us->role == 'Super User')
-                                        <span class="badge badge-primary">{{ $us->role }}</span>
+                                    @if ($alt->foto)
+                                        <img src="{{ asset('alternatif/' . $alt->foto) }}"
+                                            alt="{{ $alt->nama }}"
+                                            class="img-thumbnail"
+                                            style="width: 80px; height: 80px; object-fit: cover;">
                                     @else
-                                        <span class="badge badge-success">{{ $us->role }}</span>
+                                        <span class="text-muted">Tidak ada foto</span>
                                     @endif
                                 </td>
-                                <td>{{ $us->position->name }}</td>
-                                <td>{{ $us->shift->shift_name }}</td>
-                                <td>{{ \Carbon\Carbon::parse($us->created_at)->format('d-m-Y') }}</td>
-                                <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                        action="{{ route('user.destroy', $us->id) }}" method="POST">
-                                        {{-- <a href="{{ route('user.show', $us->slug) }}" class="btn btn-sm btn-info"><i
-                                            class="fas fa-eye"></i></a> --}}
-                                        <a href="{{ route('user.edit', $us->id) }}" class="btn btn-sm btn-primary"><i
-                                                class="far fa-edit"></i></a>
+                                <td>
+                                    <form action="{{ route('alternatif.destroy', $alt->id_alternatif) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
+                                        class="d-inline">
+                                        <a href="{{ route('alternatif.edit', $alt->id_alternatif) }}"
+                                            class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger"><i
-                                                class="fas fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-muted text-center">Belum ada data alternatif.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-    {{-- </div> --}}
 @endsection
