@@ -92,4 +92,14 @@ Route::middleware('auth')->group(function () {
         Route::put('/update/{id}', [HasilController::class, 'update'])->name('hasil.update');
         Route::delete('/delete/{id}', [HasilController::class, 'destroy'])->name('hasil.destroy');
     });
+
+    // 🔹 Alternatif
+    Route::middleware('userAkses:admin')->prefix('admin')->group(function () {
+        Route::get('alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
+        Route::get('alternatif/create', [AlternatifController::class, 'create'])->name('alternatif.create');
+        Route::post('alternatif', [AlternatifController::class, 'store'])->name('alternatif.store');
+        Route::get('alternatif/{id}/edit', [AlternatifController::class, 'edit'])->name('alternatif.edit');
+        Route::put('alternatif/{id}', [AlternatifController::class, 'update'])->name('alternatif.update');
+        Route::delete('alternatif/{id}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
+    });
 });
