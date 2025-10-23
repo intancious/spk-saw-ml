@@ -1,0 +1,103 @@
+/* ============================
+   🌌 MLBB Dark Theme Sidebar
+   ============================ */
+
+.bg-mlbb-dark {
+    /* mirip bg-gradient-primary bawaan SB Admin */
+    background: linear-gradient(180deg, #0a0f1f 10%, #1e2a44 100%) !important;
+    background-size: cover;
+}
+
+.sidebar {
+    position: relative;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: all 0.3s ease;
+}
+
+/* Teks dan ikon sidebar */
+.sidebar .nav-item .nav-link {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.sidebar .nav-item .nav-link:hover {
+    color: #00bfff;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
+}
+
+/* Menu aktif */
+.sidebar .nav-item.active .nav-link {
+    background: linear-gradient(90deg, #007bff, #00bfff);
+    color: #fff;
+    border-radius: 8px;
+}
+
+.sidebar .nav-item.active .nav-link i {
+    color: #fff;
+}
+
+/* Icon */
+.sidebar .nav-item .nav-link i {
+    color: #a8c1ff;
+    margin-right: 6px;
+}
+
+.sidebar .nav-item .nav-link:hover i {
+    color: #00bfff;
+}
+
+/* Heading dan divider */
+.sidebar-heading {
+    color: #9ca3af;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+}
+
+.sidebar-divider {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Scrollbar sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #1e90ff;
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #00bfff;
+}
+
+/* Posisikan container tombol toggle di bagian bawah tengah sidebar */
+.text-center.d-none.d-md-inline {
+    position: relative;
+    top: 3px;
+    bottom: 20px; /* jarak dari bawah */
+    left: 50%; /* tengah horizontal */
+    transform: translateX(-50%); /* supaya benar-benar center */
+    text-align: center;
+    width: 100%;
+}
+
+/* Styling tombol togglenya */
+#sidebarToggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #00bfff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00bfff88;
+    transition: background-color 0.3s ease;
+}
+
+#sidebarToggle:hover {
+    background-color: #0077cc;
+}

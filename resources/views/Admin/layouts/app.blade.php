@@ -21,8 +21,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('template/backend') }}/css/datepicker3.css" rel="stylesheet">
     <link href="{{ asset('template/backend') }}/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('template/backend') }}/css/mlbb-theme.css" rel="stylesheet">
     <link href="{{ asset('template/backend') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('template/backend') }}/vendor/jquery/jquery.min.js"></script>

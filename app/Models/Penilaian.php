@@ -15,6 +15,7 @@ class Penilaian extends Model
     protected $fillable = [
         'id_alternatif',
         'id_kriteria',
+        'id_periode',
         'nilai',
     ];
 
@@ -28,5 +29,10 @@ class Penilaian extends Model
     public function kriteria()
     {
         return $this->belongsTo(Kriteria::class, 'id_kriteria', 'id_kriteria');
+    }
+
+    public function periode()
+    {
+        return $this->belongsTo(Periode::class, 'id_periode', 'id_periode');
     }
 }

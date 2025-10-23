@@ -20,23 +20,22 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('kriteria.store') }}">
+        <form id="form_id" method="post" action="{{ route('kriteria.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="card shadow-sm">
                 <div class="card-header bg-info text-white">
                     <h5 class="mb-0">Tambah Data Kriteria</h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="form-group row">
                         {{-- KODE KRITERIA --}}
-                        <div class="col-md-6 mb-3">
+                        <div class="form-group col-md-6">
                             <label class="form-label fw-bold">Kode Kriteria</label>
                             <input type="text" name="kode_kriteria" class="form-control" value="{{ $kodeBaru }}"
                                 readonly>
                         </div>
 
-                        {{-- NAMA --}}
-                        <div class="col-md-6 mb-3">
+                        <div class="form-group col-md-6">
                             <label class="form-label fw-bold">Nama Kriteria</label>
                             <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
                                 value="{{ old('nama') }}" placeholder="Masukkan nama kriteria" required>
@@ -44,9 +43,10 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                    </div>
 
-                        {{-- TYPE (Benefit / Cost) --}}
-                        <div class="col-md-6 mb-3">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
                             <label class="form-label fw-bold">Jenis Kriteria</label>
                             <select name="type" class="form-control @error('type') is-invalid @enderror" required>
                                 <option value="" disabled selected>-- Pilih Jenis --</option>
@@ -58,8 +58,7 @@
                             @enderror
                         </div>
 
-                        {{-- BOBOT --}}
-                        <div class="col-md-6 mb-3">
+                        <div class="form-group col-md-6">
                             <label class="form-label fw-bold">Bobot</label>
                             <input type="number" step="0.01" name="bobot"
                                 class="form-control @error('bobot') is-invalid @enderror" value="{{ old('bobot') }}"
@@ -68,9 +67,10 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                    </div>
 
-                        {{-- ADA PILIHAN --}}
-                        <div class="col-md-6 mb-3">
+                    <div class="form-group row">
+                        <div class="form-group col-md-6">
                             <label class="form-label fw-bold">Ada Pilihan?</label>
                             <select name="ada_pilihan" class="form-control @error('ada_pilihan') is-invalid @enderror"
                                 required>
@@ -85,10 +85,10 @@
                         </div>
                     </div>
 
-                    {{-- BUTTON --}}
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('kriteria.index') }}" class="btn btn-secondary me-2">Kembali</a>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('kriteria.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i>
+                            Kembali</a>
+                        <button type="submit" class="btn btn-primary ml-2"><i class="fas fa-save"></i> Simpan</button>
                     </div>
                 </div>
             </div>

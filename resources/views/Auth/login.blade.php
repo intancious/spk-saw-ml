@@ -20,9 +20,99 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('template/backend') }}/css/sb-admin-2.min.css" rel="stylesheet">
 
+
+    <style>
+        /* ================================
+       🌌 Tema Gelap Mobile Legends
+       ================================ */
+        .bg-mlbb-dark {
+            background: radial-gradient(circle at center, #1e2a44 0%, #0a0f1f 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #f1f1f1;
+            font-family: "Nunito", sans-serif;
+        }
+
+        /* ================================
+       🃏 Card Login
+       ================================ */
+        .card {
+            background-color: rgba(28, 28, 28, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 123, 255, 0.1);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        /* ================================
+       📝 Input Form
+       ================================ */
+        .form-control {
+            background-color: #222;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* ================================
+       🟦 Tombol Login (Neon Biru)
+       ================================ */
+        .btn-primary {
+            background: linear-gradient(90deg, #0d6efd, #1e90ff);
+            border: none;
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #1e90ff, #63b3ff);
+            box-shadow: 0 0 20px rgba(99, 179, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .btn-user {
+            padding: 12px 24px;
+            font-size: 16px;
+        }
+
+        /* ================================
+       🚨 Alert Error
+       ================================ */
+        .alert-danger {
+            background-color: #e74a3b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* ================================
+       🧭 Teks
+       ================================ */
+        .h4,
+        .text-gray-900 {
+            color: #f1f1f1 !important;
+        }
+    </style>
+
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-mlbb-dark">
 
     <div class="container mt-5">
 
@@ -40,7 +130,7 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-white-900 mb-4">Welcome Back!</h1>
                                     </div>
 
                                     @if ($errors->any())

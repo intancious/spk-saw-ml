@@ -4,7 +4,7 @@
 ])
 
 @section('content')
- <h2 class="mb-2 text-gray-800"><i class="fas fa-users"></i> Data Alternatif</h2>
+    <h2 class="mb-2 text-gray-800"><i class="fas fa-users"></i> Data Alternatif</h2>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -27,19 +27,17 @@
                     <tbody>
                         @forelse ($alternatifs as $alt)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $alt->nama }}</td>
+                                <td class="align-middle">{{ $loop->iteration }}</td>
+                                <td class="align-middle">{{ $alt->nama }}</td>
                                 <td>
                                     @if ($alt->foto)
-                                        <img src="{{ asset('alternatif/' . $alt->foto) }}"
-                                            alt="{{ $alt->nama }}"
-                                            class="img-thumbnail"
-                                            style="width: 80px; height: 80px; object-fit: cover;">
+                                        <img src="{{ asset('alternatif/' . $alt->foto) }}" alt="{{ $alt->nama }}"
+                                            class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
                                     @else
                                         <span class="text-muted">Tidak ada foto</span>
                                     @endif
                                 </td>
-                                <td>
+                                <td class="align-middle">
                                     <form action="{{ route('alternatif.destroy', $alt->id_alternatif) }}" method="POST"
                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
                                         class="d-inline">

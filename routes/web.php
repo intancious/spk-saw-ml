@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AlternatifController;
 use App\Http\Controllers\Admin\HasilController;
 use App\Http\Controllers\Admin\KriteriaController;
 use App\Http\Controllers\Admin\PenilaianController;
+use App\Http\Controllers\Admin\PeriodeController;
 use App\Http\Controllers\Admin\SubkriteriaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
@@ -43,63 +44,59 @@ Route::middleware('auth')->group(function () {
     //     Route::resource('alternatif', AlternatifController::class);
     // });
 
-    // 🔹 Alternatif (khusus admin)
-    Route::middleware('userAkses:admin')->prefix('admin/alternatif')->group(function () {
-        Route::get('/', [AlternatifController::class, 'index'])->name('alternatif.index');
-        Route::get('/create', [AlternatifController::class, 'create'])->name('alternatif.create');
-        Route::post('/store', [AlternatifController::class, 'store'])->name('alternatif.store');
-        Route::get('/edit/{id}', [AlternatifController::class, 'edit'])->name('alternatif.edit');
-        Route::put('/update/{id}', [AlternatifController::class, 'update'])->name('alternatif.update');
-        Route::delete('/delete/{id}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
-    });
 
-    // 🔹 Kriteria
-    Route::middleware('userAkses:admin')->prefix('admin/kriteria')->group(function () {
-        Route::get('/', [KriteriaController::class, 'index'])->name('kriteria.index');
-        Route::get('/create', [KriteriaController::class, 'create'])->name('kriteria.create');
-        Route::post('/store', [KriteriaController::class, 'store'])->name('kriteria.store');
-        Route::get('/edit/{id}', [KriteriaController::class, 'edit'])->name('kriteria.edit');
-        Route::put('/update/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
-        Route::delete('/delete/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
-    });
-
-    // 🔹 Sub Kriteria
-    Route::middleware('userAkses:admin')->prefix('admin/subkriteria')->group(function () {
-        Route::get('/', [SubkriteriaController::class, 'index'])->name('subkriteria.index');
-        Route::get('/create', [SubKriteriaController::class, 'create'])->name('subkriteria.create');
-        Route::post('/store', [SubKriteriaController::class, 'store'])->name('subkriteria.store');
-        Route::get('/edit/{id}', [SubKriteriaController::class, 'edit'])->name('subkriteria.edit');
-        Route::put('/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
-        Route::delete('/delete/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
-    });
-
-    // 🔹 Penilaian
-    Route::middleware('userAkses:admin')->prefix('admin/penilaian')->group(function () {
-        Route::get('/', [PenilaianController::class, 'index'])->name('penilaian.index');
-        Route::get('/create', [PenilaianController::class, 'create'])->name('penilaian.create');
-        Route::post('/store', [PenilaianController::class, 'store'])->name('penilaian.store');
-        Route::get('/edit/{id}', [PenilaianController::class, 'edit'])->name('penilaian.edit');
-        Route::put('/update/{id}', [PenilaianController::class, 'update'])->name('penilaian.update');
-        Route::delete('/delete/{id}', [PenilaianController::class, 'destroy'])->name('penilaian.destroy');
-    });
-
-    // 🔹 Hasil
-    Route::middleware('userAkses:admin')->prefix('admin/hasil')->group(function () {
-        Route::get('/', [HasilController::class, 'index'])->name('hasil.index');
-        Route::get('/create', [HasilController::class, 'create'])->name('hasil.create');
-        Route::post('/store', [HasilController::class, 'store'])->name('hasil.store');
-        Route::get('/edit/{id}', [HasilController::class, 'edit'])->name('hasil.edit');
-        Route::put('/update/{id}', [HasilController::class, 'update'])->name('hasil.update');
-        Route::delete('/delete/{id}', [HasilController::class, 'destroy'])->name('hasil.destroy');
-    });
-
-    // 🔹 Alternatif
     Route::middleware('userAkses:admin')->prefix('admin')->group(function () {
+        // 🔹 Alternatif
+        Route::get('alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
+        Route::get('alternatif/create', [AlternatifController::class, 'create'])->name('alternatif.create');
+        Route::post('alternatif/store', [AlternatifController::class, 'store'])->name('alternatif.store');
+        Route::get('alternatif/edit/{id}', [AlternatifController::class, 'edit'])->name('alternatif.edit');
+        Route::put('alternatif/update/{id}', [AlternatifController::class, 'update'])->name('alternatif.update');
+        Route::delete('alternatif/delete/{id}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
+
+        // 🔹 Kriteria
+        Route::get('kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
+        Route::get('kriteria/create', [KriteriaController::class, 'create'])->name('kriteria.create');
+        Route::post('kriteria/store', [KriteriaController::class, 'store'])->name('kriteria.store');
+        Route::get('kriteria/edit/{id}', [KriteriaController::class, 'edit'])->name('kriteria.edit');
+        Route::put('kriteria/update/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
+        Route::delete('kriteria/delete/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
+
+        // 🔹 Sub Kriteria
+        Route::get('subkriteria', [SubkriteriaController::class, 'index'])->name('subkriteria.index');
+        Route::get('subkriteria/create', [SubKriteriaController::class, 'create'])->name('subkriteria.create');
+        Route::post('subkriteria/store', [SubKriteriaController::class, 'store'])->name('subkriteria.store');
+        Route::get('subkriteria/edit/{id}', [SubKriteriaController::class, 'edit'])->name('subkriteria.edit');
+        Route::put('subkriteria/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
+        Route::delete('subkriteria/delete/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
+
+        // 🔹 Hasil perhitungan
+        Route::get('hasil', [HasilController::class, 'index'])->name('hasil.index');
+        Route::get('hasil/create', [HasilController::class, 'create'])->name('hasil.create');
+        Route::post('hasil/store', [HasilController::class, 'store'])->name('hasil.store');
+        Route::get('hasil/edit/{id}', [HasilController::class, 'edit'])->name('hasil.edit');
+        Route::put('hasil/update/{id}', [HasilController::class, 'update'])->name('hasil.update');
+        Route::delete('hasil/delete/{id}', [HasilController::class, 'destroy'])->name('hasil.destroy');
+
+        // 🔹 Alternatif
         Route::get('alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
         Route::get('alternatif/create', [AlternatifController::class, 'create'])->name('alternatif.create');
         Route::post('alternatif', [AlternatifController::class, 'store'])->name('alternatif.store');
         Route::get('alternatif/{id}/edit', [AlternatifController::class, 'edit'])->name('alternatif.edit');
         Route::put('alternatif/{id}', [AlternatifController::class, 'update'])->name('alternatif.update');
         Route::delete('alternatif/{id}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
+
+        // Periode
+        Route::get('periode', [PeriodeController::class, 'index'])->name('periode.index');
+        Route::get('periode/create', [PeriodeController::class, 'create'])->name('periode.create');
+        Route::post('periode', [PeriodeController::class, 'store'])->name('periode.store');
+        Route::get('periode/{id}/edit', [PeriodeController::class, 'edit'])->name('periode.edit');
+        Route::put('periode/{id}', [PeriodeController::class, 'update'])->name('periode.update');
+        Route::delete('periode/{id}', [PeriodeController::class, 'destroy'])->name('periode.destroy');
+        Route::post('periode/{id}/activate', [PeriodeController::class, 'activate'])->name('periode.activate');
+
+        // 🔹 Penilaian
+        Route::get('penilaian', [PenilaianController::class, 'index'])->name('penilaian.index');        // halaman daftar
+        Route::post('penilaian', [PenilaianController::class, 'store'])->name('penilaian.store'); // input / update nilai
     });
 });

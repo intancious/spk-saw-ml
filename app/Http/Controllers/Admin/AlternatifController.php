@@ -53,7 +53,7 @@ class AlternatifController extends Controller
     public function edit($id)
     {
         $alternatif = Alternatif::findOrFail($id);
-        return view('Admin.alternatif.pages.edit', compact('alternatif'));
+        return view('Admin.pages.alternatif.edit', compact('alternatif'));
     }
 
     public function update(Request $request, $id)

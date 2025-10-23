@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-mlbb-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     @if (Auth::user()->role == 'admin')
@@ -62,23 +62,29 @@
                     <span>Data Alternatif</span></a>
             </li>
 
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('periode.index') }}">
                     <i class="fas fa-fw fa-edit"></i>
-                    <span>Data Penilaian</span></a>
-            </li> --}}
+                    <span>Data Periode</span></a>
+            </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('penilaian.index') }}">
+                    <i class="fas fa-fw fa-edit"></i>
+                    <span>Data Penilaian</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('hasil.index') }}">
                     <i class="fas fa-fw fa-calculator"></i>
                     <span>Data Perhitungan</span></a>
             </li>
 
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Hasil Akhir</span></a>
-            </li> --}}
+            </li>
 
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
@@ -90,32 +96,46 @@
                     <i class="fas fa-fw fa-users-cog"></i>
                     <span>Data User</span></a>
             </li>
-            {{--
+
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Data Profile</span></a>
-            </li> --}}
+            </li>
         @endif
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-edit"></i>
-                <span>Data Penilaian</span></a>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Data Hasil Akhir</span></a>
-        </li>
+        {{-- ============================ USER MENU ============================ --}}
+        @if (auth()->user()->role == 'user')
+            <div class="sidebar-heading">
+                Menu User
+            </div>
 
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-user"></i>
-                <span>Data Profile</span></a>
-        </li>
+            {{-- Menu Penilaian (User) --}}
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-clipboard-check"></i>
+                    <span>Data Penilaian</span>
+                </a>
+            </li>
 
+            {{-- Menu Hasil Akhir (User) --}}
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Data Hasil Akhir</span>
+                </a>
+            </li>
+
+            {{-- Menu Profile (User) --}}
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Data Profile</span>
+                </a>
+            </li>
+        @endif
     @endif
+
 
     <!-- Nav Item - Utilities Collapse Menu -->
 

@@ -6,21 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id('id_penilaian');
+            $table->unsignedBigInteger('id_periode'); // relasi ke periode
             $table->unsignedBigInteger('id_alternatif');
             $table->unsignedBigInteger('id_kriteria');
             $table->float('nilai')->default(0);
             $table->timestamps();
 
-            // Foreign key ke tabel alternatif dan kriteria
+            // Foreign key ke tabel periode, alternatif dan kriteria
+            $table->foreign('id_periode')
+                ->references('id_periode')
+                ->on('periodes')
+                ->onDelete('cascade');
+
             $table->foreign('id_alternatif')
                 ->references('id_alternatif')
                 ->on('alternatif')
@@ -32,7 +33,7 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             // Optional: pastikan kombinasi unik alternatif + kriteria
-            $table->unique(['id_alternatif', 'id_kriteria']);
+            $table->unique(['id_periode', 'id_alternatif', 'id_kriteria']);
         });
     }
 
