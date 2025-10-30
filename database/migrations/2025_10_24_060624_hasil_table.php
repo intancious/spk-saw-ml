@@ -6,16 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('hasil', function (Blueprint $table) {
             $table->id('id_hasil');
             $table->unsignedBigInteger('id_alternatif');
+            $table->unsignedBigInteger('id_periode'); // 🆕 Tambahan kolom id_periode
             $table->float('nilai')->default(0);
             $table->timestamps();
 
@@ -24,14 +21,16 @@ return new class extends Migration
                 ->references('id_alternatif')
                 ->on('alternatif')
                 ->onDelete('cascade');
+
+            // Relasi ke tabel periode
+            $table->foreign('id_periode')
+                ->references('id_periode')
+                ->on('periodes')
+                ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('hasil');

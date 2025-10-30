@@ -27,6 +27,12 @@ class Periode extends Model
         return $this->hasMany(Penilaian::class, 'id_periode', 'id_periode');
     }
 
+    // 🔹 Relasi: satu periode punya banyak hasil
+    public function hasil()
+    {
+        return $this->hasMany(Hasil::class, 'id_periode', 'id_periode');
+    }
+
     // Scope untuk ambil periode aktif
     public function scopeAktif($query)
     {

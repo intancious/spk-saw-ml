@@ -1,92 +1,54 @@
 @extends('Admin.layouts.app', [
-    'title' => 'Tambah Data Pegawai',
-    // 'pageTitle' => 'Tambah TOEFL ITP',
+    'title' => 'Tambah User',
+    'pageTitle' => 'Tambah User',
 ])
+
 @section('content')
-    <div class="container-fluid">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form id="form_id" method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
+    <h2 class="mb-2 text-gray-800"><i class="fas fa-user-plus"></i> Tambah User</h2>
+
+    <div class="card shadow mb-4">
+        <form action="{{ route('users.store') }}" method="POST">
             @csrf
-            <div class="card">
-                <div class="card-header text-white bg-info mb-3">
-                    Tambah Data Pegawai
-                </div>
-                <div class="card-body">
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Nama Pegawai</label>
-                            <input type="text" id="name" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Email</label>
-                            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required>
-                        </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Username</label>
+                        <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
                     </div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Username</label>
-                            <input type="text" id="username"
-                                class="form-control @error('username') is-invalid @enderror" name="username"
-                                value="{{ old('username') }}" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Password</label>
-                            <input type="password" id="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                value="{{ old('password') }}" required>
-                        </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Nama</label>
+                        <input type="text" name="nama" class="form-control" value="{{ old('nama') }}" required>
                     </div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Role</label>
-                            <select name="role" id="role" class="form-control" required>
-                                <option value="" selected>Pilih Role Akses</option>
-                                <option value="Super User" selected>Super User</option>
-                                <option value="User">User</option>
-                            </select>
-                            <small class="text-danger">Pilih Super User untuk dapat mengakses master data</small>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Jabatan</label>
-                            <select name="position_id" id="position_id" class="form-control" required>
-                                <option value="" selected>Pilih Jabatan</option>
-                                @foreach ($positions as $pst)
-                                    <option value="{{ $pst->id }}"
-                                        {{ old('position_id') == $pst->id ? 'selected' : '' }}>
-                                        {{ $pst->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
                     </div>
-                    <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label class="font-weight-bold">Shift</label>
-                            <select name="shift_id" id="shift_id" class="form-control" required>
-                                <option value="" selected>Pilih Shift</option>
-                                @foreach ($shifts as $sft)
-                                    <option value="{{ $sft->id }}"
-                                        {{ old('shift_id') == $sft->id ? 'selected' : '' }}>
-                                        {{ $sft->shift_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-sm-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary mx-1 mb-2">Submit</button>
-                    <button type="reset" class="btn btn-secondary mx-1 mb-2">Reset</button>
+
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div <div class="form-group col-md-6">
+                    <label class="font-weight-bold">Role</label>
+                    <select name="role" class="form-control" required>
+                        <option value="">-- Pilih Role --</option>
+                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Administrator</option>
+                        <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                    </select>
                 </div>
             </div>
-        </form>
+    </div>
+
+    <div class="card-footer text-right">
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-save"></i> Simpan
+        </button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+    </div>
+    </form>
     </div>
 @endsection

@@ -14,11 +14,18 @@ class Hasil extends Model
 
     protected $fillable = [
         'id_alternatif',
+        'id_periode',
         'nilai',
     ];
 
     public function alternatif()
     {
         return $this->belongsTo(Alternatif::class, 'id_alternatif', 'id_alternatif');
+    }
+
+    // 🔹 Relasi ke tabel periode
+    public function periode()
+    {
+        return $this->belongsTo(Periode::class, 'id_periode', 'id_periode');
     }
 }

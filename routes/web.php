@@ -4,9 +4,12 @@ use App\Http\Controllers\Admin\AlternatifController;
 use App\Http\Controllers\Admin\HasilController;
 use App\Http\Controllers\Admin\KriteriaController;
 use App\Http\Controllers\Admin\PenilaianController;
+use App\Http\Controllers\Admin\PerhitunganController;
 use App\Http\Controllers\Admin\PeriodeController;
 use App\Http\Controllers\Admin\SubkriteriaController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Frontend\HasilController as FrontendHasilController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
@@ -24,8 +27,8 @@ use App\Http\Controllers\SessionController;
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', [SessionController::class, 'index'])->name('login');
-    Route::post('/', [SessionController::class, 'login'])->name('login.proses');
+    Route::get('/login', [SessionController::class, 'index'])->name('login');
+    Route::post('/login', [SessionController::class, 'login'])->name('login.proses');
 });
 
 Route::get('/home', function () {
@@ -39,13 +42,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/admin/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-
-    // Route::middleware('userAkses:admin')->prefix('admin')->group(function () {
-    //     Route::resource('alternatif', AlternatifController::class);
-    // });
-
-
     Route::middleware('userAkses:admin')->prefix('admin')->group(function () {
+        // 🔹 User
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
         // 🔹 Alternatif
         Route::get('alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
         Route::get('alternatif/create', [AlternatifController::class, 'create'])->name('alternatif.create');
@@ -70,14 +73,6 @@ Route::middleware('auth')->group(function () {
         Route::put('subkriteria/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
         Route::delete('subkriteria/delete/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
 
-        // 🔹 Hasil perhitungan
-        Route::get('hasil', [HasilController::class, 'index'])->name('hasil.index');
-        Route::get('hasil/create', [HasilController::class, 'create'])->name('hasil.create');
-        Route::post('hasil/store', [HasilController::class, 'store'])->name('hasil.store');
-        Route::get('hasil/edit/{id}', [HasilController::class, 'edit'])->name('hasil.edit');
-        Route::put('hasil/update/{id}', [HasilController::class, 'update'])->name('hasil.update');
-        Route::delete('hasil/delete/{id}', [HasilController::class, 'destroy'])->name('hasil.destroy');
-
         // 🔹 Alternatif
         Route::get('alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
         Route::get('alternatif/create', [AlternatifController::class, 'create'])->name('alternatif.create');
@@ -98,5 +93,15 @@ Route::middleware('auth')->group(function () {
         // 🔹 Penilaian
         Route::get('penilaian', [PenilaianController::class, 'index'])->name('penilaian.index');        // halaman daftar
         Route::post('penilaian', [PenilaianController::class, 'store'])->name('penilaian.store'); // input / update nilai
+
+        // 🔹 Perhitungan
+        Route::get('/perhitungan', [PerhitunganController::class, 'index'])->name('perhitungan.index');
+        Route::get('/perhitungan/{id}', [PerhitunganController::class, 'show'])->name('perhitungan.show');
+
+        // 🔹 Hasil perhitungan
+        Route::get('/hasil', [HasilController::class, 'index'])->name('hasil.index');
+        Route::get('/hasil/{id}', [HasilController::class, 'show'])->name('hasil.show');
     });
 });
+
+Route::get('/', [FrontendHasilController::class, 'index'])->name('frontend.hasil');

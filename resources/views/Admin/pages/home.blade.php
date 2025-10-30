@@ -80,7 +80,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <a href="{{ route('kriteria.index') }}"
+                                        <a href="{{ route('penilaian.index') }}"
                                             class="text-secondary text-decoration-none">Data Penilaian</a>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <a href="{{ route('kriteria.index') }}"
+                                        <a href="{{ route('perhitungan.index') }}"
                                             class="text-secondary text-decoration-none">Data Perhitungan</a>
                                     </div>
                                 </div>

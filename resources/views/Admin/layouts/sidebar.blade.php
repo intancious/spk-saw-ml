@@ -75,13 +75,13 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('hasil.index') }}">
+                <a class="nav-link" href="{{ route('perhitungan.index') }}">
                     <i class="fas fa-fw fa-calculator"></i>
                     <span>Data Perhitungan</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('hasil.index') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Hasil Akhir</span></a>
             </li>
@@ -92,13 +92,13 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="fas fa-fw fa-users-cog"></i>
                     <span>Data User</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('profile.edit') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Data Profile</span></a>
             </li>

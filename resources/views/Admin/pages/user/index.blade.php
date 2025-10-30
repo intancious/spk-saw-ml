@@ -4,70 +4,72 @@
 ])
 
 @section('content')
-    {{-- <div class="container-fluid"> --}}
+    <h2 class="mb-2 text-gray-800"><i class="fas fa-users-cog"></i> Data User</h2>
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Pegawai</h1>
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <a href="{{ route('user.create') }}" class="btn btn-primary"><i class="bi bi-plus"></i>Tambah
-                Pegawai</a>
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Tambah User
+            </a>
         </div>
+
         <div class="card-body">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show">
+                    <i class="fas fa-check-circle"></i> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-center align-middle" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
+                        <tr class="bg-primary text-white">
                             <th>No</th>
+                            <th>Username</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Username</th>
                             <th>Role</th>
-                            <th>Jabatan</th>
-                            <th>Shift</th>
-                            <th>Tgl Daftar</th>
-                            <th>Action</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($users as $us)
+                        @forelse ($users as $user)
                             <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $us->name }}</td>
-                                <td>{{ $us->email }}</td>
-                                <td>{{ $us->username }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $user->username }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>
-                                    @if ($us->role == 'Super User')
-                                        <span class="badge badge-primary">{{ $us->role }}</span>
+                                    @if ($user->role === 'admin')
+                                        <span class="badge badge-success">Administrator</span>
                                     @else
-                                        <span class="badge badge-success">{{ $us->role }}</span>
+                                        <span class="badge badge-info">User</span>
                                     @endif
                                 </td>
-                                <td>{{ $us->position->name }}</td>
-                                <td>{{ $us->shift->shift_name }}</td>
-                                <td>{{ \Carbon\Carbon::parse($us->created_at)->format('d-m-Y') }}</td>
                                 <td class="text-center">
-                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                        action="{{ route('user.destroy', $us->id) }}" method="POST">
-                                        {{-- <a href="{{ route('user.show', $us->slug) }}" class="btn btn-sm btn-info"><i
-                                            class="fas fa-eye"></i></a> --}}
-                                        <a href="{{ route('user.edit', $us->id) }}" class="btn btn-sm btn-primary"><i
-                                                class="far fa-edit"></i></a>
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger"><i
-                                                class="fas fa-trash"></i></button>
+                                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-center text-muted">Belum ada data user.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-    {{-- </div> --}}
 @endsection
