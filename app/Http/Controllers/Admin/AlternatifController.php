@@ -11,7 +11,7 @@ class AlternatifController extends Controller
 {
     public function index()
     {
-        $alternatifs = Alternatif::orderBy('created_at', 'desc')->get();
+        $alternatifs = Alternatif::orderBy('created_at', 'asc')->get();
         return view('Admin.pages.alternatif.index', compact('alternatifs'));
     }
 

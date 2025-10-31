@@ -29,7 +29,8 @@ class PerhitunganController extends Controller
         }
 
         // ambil data master
-        $alternatifs = Alternatif::orderBy('nama')->get();          // koleksi Alternatif
+        // $alternatifs = Alternatif::orderBy('nama')->get();          // koleksi Alternatif
+        $alternatifs = Alternatif::orderBy('created_at', 'asc')->get();          // koleksi Alternatif
         $kriterias   = Kriteria::orderBy('kode_kriteria')->get();   // koleksi Kriteria
 
         // ambil semua penilaian untuk periode ini

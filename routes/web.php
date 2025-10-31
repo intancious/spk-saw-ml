@@ -73,14 +73,6 @@ Route::middleware('auth')->group(function () {
         Route::put('subkriteria/update/{id}', [SubKriteriaController::class, 'update'])->name('subkriteria.update');
         Route::delete('subkriteria/delete/{id}', [SubKriteriaController::class, 'destroy'])->name('subkriteria.destroy');
 
-        // 🔹 Alternatif
-        Route::get('alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
-        Route::get('alternatif/create', [AlternatifController::class, 'create'])->name('alternatif.create');
-        Route::post('alternatif', [AlternatifController::class, 'store'])->name('alternatif.store');
-        Route::get('alternatif/{id}/edit', [AlternatifController::class, 'edit'])->name('alternatif.edit');
-        Route::put('alternatif/{id}', [AlternatifController::class, 'update'])->name('alternatif.update');
-        Route::delete('alternatif/{id}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
-
         // Periode
         Route::get('periode', [PeriodeController::class, 'index'])->name('periode.index');
         Route::get('periode/create', [PeriodeController::class, 'create'])->name('periode.create');

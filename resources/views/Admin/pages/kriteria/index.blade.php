@@ -41,7 +41,7 @@
                                         <span class="badge badge-danger">{{ $krt->type }}</span>
                                     @endif
                                 </td>
-                                <td>{{ number_format($krt->bobot) }}</td>
+                                <td>{{ number_format($krt->bobot, 2) }}</td>
                                 <td>
                                     @if ($krt->ada_pilihan)
                                         <span class="badge badge-info">Pilihan Sub Kriteria</span>

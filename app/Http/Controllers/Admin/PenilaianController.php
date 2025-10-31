@@ -20,7 +20,8 @@ class PenilaianController extends Controller
                 ->with('error', 'Belum ada periode aktif. Silakan aktifkan periode terlebih dahulu.');
         }
 
-        $alternatifs = Alternatif::orderBy('nama')->get();
+        // $alternatifs = Alternatif::orderBy('nama')->get();
+        $alternatifs = Alternatif::orderBy('created_at', 'asc')->get();
         $kriterias = Kriteria::with('subKriteria')->orderBy('kode_kriteria')->get();
 
         return view('Admin.pages.penilaian.index', compact('alternatifs', 'kriterias', 'periodeAktif'));

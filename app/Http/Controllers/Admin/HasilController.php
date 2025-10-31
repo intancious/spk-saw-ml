@@ -14,7 +14,7 @@ class HasilController extends Controller
         // Ambil semua periode untuk tombol pilihan
         $periodes = Periode::orderBy('tanggal_mulai', 'desc')->get();
 
-        return view('admin.pages.hasil.index', compact('periodes'));
+        return view('Admin.pages.hasil.index', compact('periodes'));
     }
 
     public function show($id)
@@ -28,6 +28,6 @@ class HasilController extends Controller
             ->orderByDesc('nilai')
             ->get();
 
-        return view('admin.pages.hasil.index', compact('periodes', 'periodeAktif', 'hasil'));
+        return view('Admin.pages.hasil.index', compact('periodes', 'periodeAktif', 'hasil'));
     }
 }
