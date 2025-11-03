@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'desc')->get();
-        return view('admin.pages.user.index', compact('users'));
+        return view('Admin.pages.user.index', compact('users'));
     }
 
     /**
@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.user.create');
+        return view('Admin.pages.user.create');
     }
 
     /**
